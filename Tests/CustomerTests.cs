@@ -9,14 +9,20 @@ namespace TylerSupportPortal.Tests.Tests;
 [TestFixture]
 public class CustomerTests
 {
+    private CustomerService _service;
+
+    [OneTimeSetUp]
+    public void OneTimeSetup()
+    {
+    }
+
     [Test]
     public void CustomerIsCreatedAsActive()
     {
-        var service = new CustomerService();
-
-        var customer = service.CreateCustomer("Acme Corp");
+        var customer = _service.CreateCustomer("Acme Corp");
 
         Assert.That(customer.Active, Is.True);
     }
 }
+
 

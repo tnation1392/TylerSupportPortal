@@ -11,10 +11,16 @@ namespace TylerSupportPortal.Tests.Tests;
 [TestFixture]
 public class AuthenticationTests
 {
+    private AuthenticationService _service;
+
+    [OneTimeSetUp]
+    public void OneTimeSetup()
+    {
+    }
+
     [Test]
     public void ValidUserCanLogin()
     {
-        var service = new AuthenticationService();
 
         var user = new User
         {
@@ -23,7 +29,7 @@ public class AuthenticationTests
             IsLocked = false
         };
 
-        bool result = service.Login(user);
+        bool result = _service.Login(user);
 
         Assert.That(result, Is.True);
     }
@@ -31,7 +37,6 @@ public class AuthenticationTests
     [Test]
     public void LockedUserCannotLogin()
     {
-        var service = new AuthenticationService();
 
         var user = new User
         {
@@ -40,8 +45,9 @@ public class AuthenticationTests
             IsLocked = true
         };
 
-        bool result = service.Login(user);
+        bool result = _service.Login(user);
 
         Assert.That(result, Is.False);
     }
 }
+
