@@ -14,6 +14,7 @@ public class CustomerTests
     [OneTimeSetUp]
     public void OneTimeSetup()
     {
+        _service = new CustomerService();
     }
 
     [Test]
@@ -22,6 +23,14 @@ public class CustomerTests
         var customer = _service.CreateCustomer("Acme Corp");
 
         Assert.That(customer.Active, Is.True);
+    }
+
+    [OneTimeTearDown]
+    public void OneTimeCleanup()
+    {
+        Console.WriteLine("Authentication fixture completed.");
+
+        _service = null;
     }
 }
 
