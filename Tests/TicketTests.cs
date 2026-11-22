@@ -39,4 +39,17 @@ public class TicketTests
         Assert.That(retryCount,
             Is.LessThanOrEqualTo(5));
     }
+
+    [Test]
+    public void TicketStatusShouldBeOpen(
+        [Values(
+            "Sample 1",
+            "Sample 2",
+            "Sample 3")]
+        string title)
+    {
+        var ticket = _service.CreateTicket(title);
+        Assert.That(ticket.Status,
+            Is.EqualTo("Open"));
+    }
 }

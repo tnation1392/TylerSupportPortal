@@ -63,7 +63,6 @@ public class CustomerTests
             Is.GreaterThan(0));
     }
 
-
     [TearDown]
     public void CleanupTestData()
     {
