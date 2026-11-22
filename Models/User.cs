@@ -4,6 +4,7 @@ using System.Text;
 
 namespace TylerSupportPortal.Tests.Models;
 
+//Creates a user with Username, Password and bool IsLocked
 public class User
 {
     public string Username { get; set; }

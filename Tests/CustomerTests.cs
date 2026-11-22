@@ -3,12 +3,15 @@ using TylerSupportPortal.Tests.Services;
 
 namespace TylerSupportPortal.Tests.Tests;
 
+//Test fixture setup for Customer testing
 [TestFixture]
+
 public class CustomerTests
-{
+{//Service setup
     private CustomerService _service;
     private List<Customer> _createdCustomers;
 
+    //One time setup
     [OneTimeSetUp]
     public void OneTimeSetup()
     {
@@ -16,6 +19,7 @@ public class CustomerTests
         _createdCustomers = new List<Customer>();
     }
 
+    //Test Case data 
     public static IEnumerable<TestCaseData> CustomerCreationTestCases()
     {
         yield return new TestCaseData(
@@ -34,6 +38,7 @@ public class CustomerTests
             "Contoso");
     }
 
+    //Test case source for above data
     [TestCaseSource(nameof(CustomerCreationTestCases))]
     public void CustomerCreationBehavior(
     string customerName,
@@ -55,6 +60,7 @@ public class CustomerTests
             Is.GreaterThan(0));
     }
 
+    //Testing that imported customer counts should be greater than 0 every time
     [Test]
     public void ImportedCustomerCountShouldBeValid(
     [Range(1, 100, 10)] int customerCount)
@@ -63,6 +69,7 @@ public class CustomerTests
             Is.GreaterThan(0));
     }
 
+    //Teardown of above test
     [TearDown]
     public void CleanupTestData()
     {

@@ -6,6 +6,7 @@ using TylerSupportPortal.Tests.Models;
 
 namespace TylerSupportPortal.Tests.Services;
 
+//A class used for ticket testing
 public class TicketService
 {
     public Ticket CreateTicket(string title)

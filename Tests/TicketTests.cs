@@ -3,6 +3,7 @@
 [TestFixture]
 public class TicketTests
 {
+    //Service setup
     private TicketService _service;
 
     [OneTimeSetUp]
@@ -11,6 +12,7 @@ public class TicketTests
         _service = new TicketService();
     }
 
+    //Testing that created tickets keep their title
     [Test]
     public void CreatedTicketShouldKeepTitle(
         [Values(
@@ -25,6 +27,7 @@ public class TicketTests
             Is.EqualTo(title));
     }
 
+    //Testing that TicketID should be positive
     [Test]
     public void TicketIdShouldBePositive(
     [Range(1, 10)] int ticketId)
@@ -32,6 +35,7 @@ public class TicketTests
         Assert.That(ticketId, Is.GreaterThan(0));
     }
 
+    //Testing that the retry count should be <= 5
     [Test]
     public void RetryCountShouldBeReasonable(
     [Range(1, 5)] int retryCount)
@@ -40,6 +44,7 @@ public class TicketTests
             Is.LessThanOrEqualTo(5));
     }
 
+    //Testing that the TicketStatus should be open post-creation
     [Test]
     public void TicketStatusShouldBeOpen(
         [Values(

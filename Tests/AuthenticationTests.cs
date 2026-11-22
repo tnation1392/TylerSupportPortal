@@ -8,9 +8,17 @@ using TylerSupportPortal.Tests.Services;
 
 namespace TylerSupportPortal.Tests.Tests;
 
+//A test fixture containing multiple User setups used for testing below
 [TestFixture]
 public class AuthenticationTests
 {
+
+    //One time setup for Authentication tests
+    [OneTimeSetUp]
+    public void OneTimeSetup()
+    {
+        _service = new AuthenticationService();
+    }
     public static IEnumerable<TestCaseData> LoginTestCases()
     {
         yield return new TestCaseData(
@@ -50,6 +58,7 @@ public class AuthenticationTests
             false);
     }
 
+    //TestCaseSource used to act on the above Fixture
     [TestCaseSource(nameof(LoginTestCases))]
     public void UserLoginBehavior
         (
@@ -64,12 +73,8 @@ public class AuthenticationTests
 
     private AuthenticationService _service;
 
-    [OneTimeSetUp]
-    public void OneTimeSetup()
-    {
-        _service = new AuthenticationService();
-    }
-
+    
+    //TearDown
     [OneTimeTearDown]
     public void OneTimeCleanup()
     {
