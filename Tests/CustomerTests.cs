@@ -16,15 +16,45 @@ public class CustomerTests
         _createdCustomers = new List<Customer>();
     }
 
-    [Test]
-    public void CustomerIsCreatedAsActive()
+    public static IEnumerable<TestCaseData> CustomerCreationTestCases()
     {
-        var customer = _service.CreateCustomer("Acme Corp");
+        yield return new TestCaseData(
+            "Acme Corp",
+            true,
+            "Acme Corp");
+
+        yield return new TestCaseData(
+            "Tyler Technologies",
+            true,
+            "Tyler Technologies");
+
+        yield return new TestCaseData(
+            "Contoso",
+            true,
+            "Contoso");
+    }
+
+    [TestCaseSource(nameof(CustomerCreationTestCases))]
+    public void CustomerCreationBehavior(
+    string customerName,
+    bool expectedActive,
+    string expectedName)
+    {
+        var customer =
+            _service.CreateCustomer(customerName);
 
         _createdCustomers.Add(customer);
 
-        Assert.That(customer.Active, Is.True);
+        Assert.That(customer.Active,
+            Is.EqualTo(expectedActive));
+
+        Assert.That(customer.Name,
+            Is.EqualTo(expectedName));
+
+        Assert.That(customer.Id,
+            Is.GreaterThan(0));
     }
+
 
     [TearDown]
     public void CleanupTestData()
