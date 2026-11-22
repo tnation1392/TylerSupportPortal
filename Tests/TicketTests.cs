@@ -24,4 +24,19 @@ public class TicketTests
         Assert.That(ticket.Title,
             Is.EqualTo(title));
     }
+
+    [Test]
+    public void TicketIdShouldBePositive(
+    [Range(1, 10)] int ticketId)
+    {
+        Assert.That(ticketId, Is.GreaterThan(0));
+    }
+
+    [Test]
+    public void RetryCountShouldBeReasonable(
+    [Range(1, 5)] int retryCount)
+    {
+        Assert.That(retryCount,
+            Is.LessThanOrEqualTo(5));
+    }
 }

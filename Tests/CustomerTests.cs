@@ -55,6 +55,14 @@ public class CustomerTests
             Is.GreaterThan(0));
     }
 
+    [Test]
+    public void ImportedCustomerCountShouldBeValid(
+    [Range(1, 100, 10)] int customerCount)
+    {
+        Assert.That(customerCount,
+            Is.GreaterThan(0));
+    }
+
 
     [TearDown]
     public void CleanupTestData()
