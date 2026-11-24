@@ -60,6 +60,8 @@ public class AuthenticationTests
 
     //TestCaseSource used to act on the above Fixture
     [TestCaseSource(nameof(LoginTestCases))]
+    [Category("Authentication")]
+    [Category("Smoke")]
     public void UserLoginBehavior
         (
         User user, 

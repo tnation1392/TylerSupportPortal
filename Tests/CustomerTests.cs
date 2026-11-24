@@ -40,6 +40,8 @@ public class CustomerTests
 
     //Test case source for above data
     [TestCaseSource(nameof(CustomerCreationTestCases))]
+    [Category("Customer")]
+    [Category("Regression")]
     public void CustomerCreationBehavior(
     string customerName,
     bool expectedActive,
@@ -62,12 +64,15 @@ public class CustomerTests
 
     //Testing that imported customer counts should be greater than 0 every time
     [Test]
+    [Category("Customer")]
+    [Category("Regression")]
     public void ImportedCustomerCountShouldBeValid(
     [Range(1, 100, 10)] int customerCount)
     {
         Assert.That(customerCount,
             Is.GreaterThan(0));
     }
+
 
     //Teardown of above test
     [TearDown]

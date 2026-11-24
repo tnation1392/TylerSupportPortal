@@ -14,6 +14,8 @@ public class TicketTests
 
     //Testing that created tickets keep their title
     [Test]
+    [Category("Ticket")]
+    [Category("Regression")]
     public void CreatedTicketShouldKeepTitle(
         [Values(
             "Login Issue",
@@ -29,6 +31,9 @@ public class TicketTests
 
     //Testing that TicketID should be positive
     [Test]
+    [Category("Ticket")]
+    [Category("Regression")]
+
     public void TicketIdShouldBePositive(
     [Range(1, 10)] int ticketId)
     {
@@ -46,6 +51,9 @@ public class TicketTests
 
     //Testing that the TicketStatus should be open post-creation
     [Test]
+    [Category("Ticket")]
+    [Category("Regression")]
+
     public void TicketStatusShouldBeOpen(
         [Values(
             "Sample 1",
