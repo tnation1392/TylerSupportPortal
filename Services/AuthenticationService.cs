@@ -6,6 +6,7 @@ using TylerSupportPortal.Tests.Models;
 
 namespace TylerSupportPortal.Tests.Services;
 
+//A class used for login testing
 public class AuthenticationService
 {
     public bool Login(User user)

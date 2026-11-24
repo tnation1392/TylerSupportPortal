@@ -6,6 +6,8 @@ using TylerSupportPortal.Tests.Models;
 
 namespace TylerSupportPortal.Tests.Services;
 
+//A class used for report testing
+
 public class ReportService
 {
     public Report GenerateReport(string name)
