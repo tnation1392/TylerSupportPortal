@@ -65,4 +65,21 @@ public class TicketTests
         Assert.That(ticket.Status,
             Is.EqualTo("Open"));
     }
+
+    [Test]
+    [Category ("Ticket")]
+    [Category("Regression")]
+    public void TicketShouldHaveValidDefaults()
+    {
+        var ticket = _service.CreateTicket("Login Issue");
+
+        Assert.Multiple(() =>
+            {
+            Assert.That(ticket.Title, Is.EqualTo("Login Issue"));
+            Assert.That(ticket.Status, Is.EqualTo("Open"));
+            Assert.That(ticket.Id, Is.GreaterThan(0));
+            });
+
+
+    }
 }

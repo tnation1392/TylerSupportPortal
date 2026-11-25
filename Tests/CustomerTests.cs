@@ -52,6 +52,16 @@ public class CustomerTests
 
         _createdCustomers.Add(customer);
 
+        Assert.Multiple(() =>
+        {
+            Assert.That(customer.Active,
+                Is.EqualTo(expectedActive));
+            Assert.That(customer.Name,
+                Is.EqualTo(expectedName));
+            Assert.That(customer.Id,
+                Is.GreaterThan(0));
+        });
+
         Assert.That(customer.Active,
             Is.EqualTo(expectedActive));
 
@@ -60,6 +70,9 @@ public class CustomerTests
 
         Assert.That(customer.Id,
             Is.GreaterThan(0));
+
+        Assert.That(customer.Name,
+            Does.StartWith(expectedName.Substring(0, 1)));
     }
 
     //Testing that imported customer counts should be greater than 0 every time
