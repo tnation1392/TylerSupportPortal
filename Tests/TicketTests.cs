@@ -1,7 +1,8 @@
 ﻿using TylerSupportPortal.Tests.Services;
+using TylerSupportPortal.Tests.Shared;
 
 [TestFixture]
-public class TicketTests
+public class TicketTests : BaseTest
 {
     //Service setup
     private TicketService _service;
