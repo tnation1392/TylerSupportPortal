@@ -12,22 +12,28 @@ public class TicketTests
         _service = new TicketService();
     }
 
-    //Testing that created tickets keep their title
-    [Test]
-    [Category("Ticket")]
-    [Category("Regression")]
-    public void CreatedTicketShouldKeepTitle(
-        [Values(
-            "Login Issue",
-            "Database Error",
-            "Reporting Problem")]
-        string title)
+    public static IEnumerable<TestCaseData> TicketTitleCases()
     {
-        var ticket = _service.CreateTicket(title);
+        yield return new TestCaseData("Login Issue");
+
+        yield return new TestCaseData("Database Error");
+
+        yield return new TestCaseData("Reporting Problem");
+
+        yield return new TestCaseData("Customer Import Failure");
+    }
+
+    [TestCaseSource(nameof(TicketTitleCases))]
+    public void CreatedTicketShouldKeepTitle(
+    string title)
+    {
+        var ticket =
+            _service.CreateTicket(title);
 
         Assert.That(ticket.Title,
             Is.EqualTo(title));
     }
+
 
     //Testing that TicketID should be positive
     [Test]
