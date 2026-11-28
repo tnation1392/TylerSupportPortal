@@ -1,12 +1,13 @@
 ﻿using TylerSupportPortal.Tests.Models;
 using TylerSupportPortal.Tests.Services;
+using TylerSupportPortal.Tests.Shared; 
 
 namespace TylerSupportPortal.Tests.Tests;
 
 //Test fixture setup for Customer testing
 [TestFixture]
 
-public class CustomerTests
+public class CustomerTests : BaseTest
 {//Service setup
     private CustomerService _service;
     private List<Customer> _createdCustomers;

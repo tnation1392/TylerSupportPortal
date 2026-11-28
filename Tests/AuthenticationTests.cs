@@ -5,12 +5,13 @@ using System.Text;
 using NUnit.Framework;
 using TylerSupportPortal.Tests.Models;
 using TylerSupportPortal.Tests.Services;
+using TylerSupportPortal.Tests.Shared;
 
 namespace TylerSupportPortal.Tests.Tests;
 
 //A test fixture containing multiple User setups used for testing below
 [TestFixture]
-public class AuthenticationTests
+public class AuthenticationTests : BaseTest
 {
 
     //One time setup for Authentication tests
