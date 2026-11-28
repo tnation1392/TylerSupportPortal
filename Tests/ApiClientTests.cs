@@ -20,28 +20,14 @@ namespace TylerSupportPortal.Tests.Tests
 
             var apiClient = new ApiClient(httpClient);
 
-            var response = await apiClient.GetAsync("posts/1");
-
-            Assert.That(response.IsSuccessStatusCode, Is.True);
-
-            string json = await response.Content.ReadAsStringAsync();
-
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-
-            var apiPost = JsonSerializer.Deserialize<ApiPost>(json, options);
-
-
-
+            var apiPost = await apiClient.GetAsync<ApiPost>("posts/1");
+        
             Assert.That(apiPost, Is.Not.Null);
             Assert.That(apiPost.UserId, Is.EqualTo(1));
             Assert.That(apiPost.Id, Is.EqualTo(1));
             Assert.That(apiPost.Title, Is.Not.Empty);
             Assert.That(apiPost.Body, Is.Not.Empty);
 
-            response.Dispose();
         }
     }
 }
